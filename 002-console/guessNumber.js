@@ -3,14 +3,13 @@
 const readline = require('readline');
 const input = readline.createInterface(process.stdin);
 const MIN = 0;
-const MAX = 1000;
+const MAX = 100;
 
 console.log(`Загадано число в диапазоне от ${MIN} до ${MAX}`);
 const randomNumber = getRandomInt(MIN, MAX);
 
 input.on('line', guessPlayHandler);
 input.on('close', () => console.log('This is the end'));
-
 
 function guessPlayHandler(data) {
      const value = Number(data);
