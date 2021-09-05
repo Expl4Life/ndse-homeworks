@@ -1,1 +1,7 @@
+node_modules
 .idea
+solution
+/state/dropdown/solution
+
+#IDE
+.DS_store
