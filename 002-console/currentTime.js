@@ -25,7 +25,6 @@ yargs
         describe: `display the ${COMMANDS.current} date/year/month`,
         handler: currentTimeHandler,
         builder: (yargs) => yargs
-            .command(COMMANDS.current)
             .option(OPTIONS.m, { alias: ALIASES.month, describe: 'display the current month', type: 'boolean',})
             .option(OPTIONS.d, { alias: ALIASES.date, describe: 'display the current date', type: 'boolean'})
             .option(OPTIONS.y, { alias: ALIASES.year, describe: 'display the current year', type: 'boolean' })
@@ -41,7 +40,6 @@ yargs
         describe: 'add some date/year/month to current ISO time',
         handler: addTimeHandler,
         builder: (yargs) => yargs
-            .command(COMMANDS.current)
             .option(OPTIONS.m, { alias: ALIASES.month, describe: 'add some month to current ISO time', type: 'number',})
             .option(OPTIONS.d, { alias: ALIASES.date, describe: 'add some days to current ISO time', type: 'number'})
             .option(OPTIONS.y, { alias: ALIASES.year, describe: 'add some years to current ISO time', type: 'number' })
@@ -54,7 +52,6 @@ yargs
         describe: 'subtract some date/year/month from current ISO time',
         handler: subTimeHandler,
         builder: (yargs) => yargs
-            .command(COMMANDS.current)
             .option(OPTIONS.m, { alias: ALIASES.month, describe: 'subtract some month from current ISO time', type: 'number',})
             .option(OPTIONS.d, { alias: ALIASES.date, describe: 'subtract some date from current ISO time', type: 'number'})
             .option(OPTIONS.y, { alias: ALIASES.year, describe: 'subtract some year from current ISO time', type: 'number' })
