@@ -35,8 +35,8 @@ function guessPlayHandler(data) {
     }
 }
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
+function getRandomInt(minVal, maxVal) {
+    const min = Math.ceil(minVal);
+    const max = Math.floor(maxVal);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
