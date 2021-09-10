@@ -11,6 +11,7 @@ const randomNumber = getRandomInt(MIN, MAX);
 input.on('line', guessPlayHandler);
 input.on('close', () => console.log('This is the end'));
 
+
 function guessPlayHandler(data) {
      const value = Number(data);
 

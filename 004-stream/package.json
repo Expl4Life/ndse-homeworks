@@ -1,0 +1,24 @@
+{
+  "name": "004-stream",
+  "version": "1.0.0",
+  "description": "homework [004-stream]",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Expl4Life/ndse-homeworks/tree/master/004-stream"
+  },
+  "keywords": [
+    "console"
+  ],
+  "author": "witcher",
+  "license": "ISC",
+  "bin": {
+    "game": "headsAndTails.js"
+  },
+  "dependencies": {
+    "yargs": "^17.1.1"
+  }
+}

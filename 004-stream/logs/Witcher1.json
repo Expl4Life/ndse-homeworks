@@ -1,0 +1,24 @@
+{
+    "results": [
+        {
+            "isWinner": false,
+            "date": "2021-09-10T21:10:25.001Z"
+        },
+        {
+            "isWinner": false,
+            "date": "2021-09-10T21:13:48.138Z"
+        },
+        {
+            "isWinner": true,
+            "date": "2021-09-10T21:13:49.747Z"
+        },
+        {
+            "isWinner": false,
+            "date": "2021-09-10T21:14:11.557Z"
+        },
+        {
+            "isWinner": true,
+            "date": "2021-09-10T21:14:12.620Z"
+        }
+    ]
+}
