@@ -16,7 +16,8 @@
   "author": "witcher",
   "license": "ISC",
   "bin": {
-    "game": "headsAndTails.js"
+    "game": "headsAndTails.js",
+    "statistics": "statistics.js"
   },
   "dependencies": {
     "yargs": "^17.1.1"

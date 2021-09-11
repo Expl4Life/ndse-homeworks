@@ -62,7 +62,7 @@ class Logger {
     }
 
     _createLogFolder = () => {
-        fs.mkdir(dirPath, { recursive: true }, async (err) => {
+        fs.mkdir(this.dirPath, { recursive: true }, async (err) => {
             if (err) throw new Error(err);
             this.isFolderCreated = true;
             this._readLogFile();
@@ -70,16 +70,17 @@ class Logger {
     }
 
     _readLogFile = () => {
-        readFile(this.filePath, 'utf-8')
-            .then((data) => {
-                this.data = JSON.parse(data);
-                this.logWasRead = true;
-            })
-            .catch((err) => {
-                if (err) {
-                    this.logWasRead = false;
-                }
-            })
+        this.isFolderCreated && 
+            readFile(this.filePath, 'utf-8')
+                .then((data) => {
+                    this.data = JSON.parse(data);
+                    this.logWasRead = true;
+                })
+                .catch((err) => {
+                    if (err) {
+                        this.logWasRead = false;
+                    }
+                })
     }
 }
 
