@@ -1,7 +1,8 @@
 node_modules
 .idea
+.env
 solution
 /state/dropdown/solution
-
+/005-http/config.js
 #IDE
 .DS_store
