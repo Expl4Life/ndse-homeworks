@@ -1,0 +1,25 @@
+{
+  "name": "006-express",
+  "version": "1.0.0",
+  "description": "006-express",
+  "main": "express.js",
+  "scripts": {
+    "dev": "nodemon express.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Expl4Life/ndse-homeworks/tree/master/006-express"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Witcher",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
