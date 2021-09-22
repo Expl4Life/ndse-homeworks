@@ -1,0 +1,12 @@
+20:56:35 GET: /api/books user-agent: PostmanRuntime/7.28.4
+20:57:27 GET: /api/books user-agent: PostmanRuntime/7.28.4
+20:57:53 GET: /api/books user-agent: PostmanRuntime/7.28.4
+20:58:23 GET: /api/books user-agent: PostmanRuntime/7.28.4
+21:0:48 POST: /api/user/login user-agent: PostmanRuntime/7.28.4
+21:1:15 POST: /api/user/login user-agent: PostmanRuntime/7.28.4
+21:1:36 POST: /api/user/login user-agent: PostmanRuntime/7.28.4
+21:1:49 GET: /api/books user-agent: PostmanRuntime/7.28.4
+21:2:9 POST: /api/books user-agent: PostmanRuntime/7.28.4
+21:2:13 GET: /api/books user-agent: PostmanRuntime/7.28.4
+21:2:30 PUT: /api/books/36e9ec67-ab17-4b45-ae42-6cf6a0952658 user-agent: PostmanRuntime/7.28.4
+21:2:35 GET: /api/books user-agent: PostmanRuntime/7.28.4
