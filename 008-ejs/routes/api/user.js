@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { store } = require('../store');
+const { store } = require('../../store');
 
 router.post('/login', (req, res) => {
     res.status(201);
