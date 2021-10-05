@@ -1,3 +1,8 @@
+### Запуск
+* cd counter :  npm i
+* cd app :  npm i
+* on project level: docker-compose up
+
 # Домашнее задание к занятию «2.3 EJS»
 
 **Правила выполнения домашней работы:** 

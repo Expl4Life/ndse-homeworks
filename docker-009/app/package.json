@@ -17,11 +17,11 @@
   "author": "Witcher",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.22.0",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "multer": "^1.4.3",
-    "request": "^2.88.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

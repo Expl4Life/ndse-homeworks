@@ -1,10 +1,9 @@
 const express = require('express');
-const request = require('request');
+const axios = require('axios');
 const router = express.Router();
 const { Book } = require('../models');
 const { store } = require('../store');
-const COUNTER_API_URL = '/counter';
-
+const COUNTER_API_URL = `http://${process.env.COUNTER_URL}:${process.env.COUNTER_PORT || '3001'}/counter`;
 
 router.get('/', (req, res) => {
     const {books} = store;
@@ -56,16 +55,21 @@ router.get('/:id', (req, res) => {
     if (idx !== -1) {
     
         let counter = 0;
-        request.post(`${COUNTER_API_URL}/${id}/cnt`, {port: 3001});
-        request.get(`${COUNTER_API_URL}/${id}`, {port: 3001})
-            .on('response', response => {
-                console.log(response);
-                counter = (response && response.body.cnt) || counter;
-
+        axios.post(`${COUNTER_API_URL}/${id}/cnt`);
+        axios
+            .get(`${COUNTER_API_URL}/${id}`)
+            .then((response) => {
                 res.render("books/view", {
                     title: "Book | view",
                     book: books[idx],
-                    cnt: counter + 1
+                    cnt: (Number(response.data && response.data.cnt || 0))
+                });
+            })
+            .finally(() => {
+                res.render("books/view", {
+                    title: "Book | view",
+                    book: books[idx],
+                    cnt: counter
                 });
             })
     } else {
