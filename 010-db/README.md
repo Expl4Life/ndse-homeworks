@@ -1,3 +1,38 @@
+- 1. запрос(ы) для *вставки* данных минимум о двух книгах в коллекцию **books**
+```javascript
+  db.books.insertMany([
+    {
+      title: "Harry Potter",
+      description: "wizzards world",
+      authors: "J.K. Rowling"
+    },
+    {
+      title: "The Idiot",
+      description: "noval",
+      authors: "F.M. Dostoevsky"
+    },
+  ]);
+``` 
+- 2. запрос для *поиска* полей документов коллекции **books** по полю *title*
+```javascript
+  db.books.find( { "title": "Harry Potter" });
+``` 
+
+
+- 3. запрос для *редактирования* полей: *description* и *authors* коллекции **books** по *_id* записи
+```javascript
+    db.books.update(
+      { _id: 1 },
+      {
+        $set: {
+          description: "new wizzards world",
+          authors: "new J.K. Rowling",
+        }
+      }
+    )
+``` 
+
+
 # Домашнее задание к занятию «2.5 База данных и хранение данных»
 
 **Правила выполнения домашней работы:** 
