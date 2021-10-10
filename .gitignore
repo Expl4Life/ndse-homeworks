@@ -4,5 +4,6 @@ node_modules
 solution
 /state/dropdown/solution
 /005-http/config.js
+/011-mongo/data
 #IDE
 .DS_store
