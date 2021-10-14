@@ -5,5 +5,7 @@ solution
 /state/dropdown/solution
 /005-http/config.js
 /011-mongo/data
+/012-auth/data
+/012-auth/data-redis
 #IDE
 .DS_store
