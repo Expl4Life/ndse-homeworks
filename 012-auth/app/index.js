@@ -28,8 +28,8 @@ const UserAtlasDB = process.env.DB_ATLAS_USERNAME;
 const PasswordAtlasDB = process.env.DB_ATLAS_PASSWORD;
 const NameAtlasDB = process.env.DB_ATLAS_NAME || 'app_database';
 
-const GITHUB_CLIENT_ID = "95e150b655f5a193d9d4";
-const GITHUB_CLIENT_SECRET = "6b6f7d00796b6915f1caa4cc4337c78f4d1ef26e";
+const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || '95e150b655f5a193d9d4';
+const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || '6b6f7d00796b6915f1caa4cc4337c78f4d1ef26e';
 
 
 const APP_URL = '/api';
