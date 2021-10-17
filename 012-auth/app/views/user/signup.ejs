@@ -6,19 +6,18 @@
 
 <div class="row">
     <div class="col-sm-8">
-        <form action="/signup" method="post" class="mt-5">
+        <form action="/api/user/signup" method="post" class="mt-5">
             <div class="form-group">
-                <label for="inputTitle">Логин</label>
+                <label for="userName">Логин</label>
                 <input type="text"
-                    name="title"
-                    name="username"
+                    name="userName"
                     placeholder="Введите логин"
                     class="form-control"
-                    id="inputTitle">
+                    id="userName">
             </div>
 
             <div class="form-group">
-                <label for="inputTitle">Пароль</label>
+                <label for="inputPassword">Пароль</label>
                 <input type="password"
                     name="password"
                     placeholder="Введите пароль"
@@ -27,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <label for="inputTitle">Повторите пароль</label>
+                <label for="inputPassword">Повторите пароль</label>
                 <input type="password"
                     name="repeatPassword"
                     placeholder="Повторите пароль"

@@ -1,7 +1,7 @@
 {
-  "name": "009-docker",
+  "name": "012-auth",
   "version": "1.0.0",
-  "description": "009-docker",
+  "description": "012-auth",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Expl4Life/ndse-homeworks/tree/master/009-docker"
+    "url": "https://github.com/Expl4Life/ndse-homeworks/tree/master/012-auth"
   },
   "keywords": [
-    "express, ejs, docker"
+    "express, ejs, auth"
   ],
   "author": "Witcher",
   "license": "ISC",
@@ -25,6 +25,8 @@
     "express-session": "^1.17.2",
     "mongoose": "^6.0.10",
     "multer": "^1.4.3",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
