@@ -11,7 +11,7 @@ const indexRouter = require('./routes/index');
 const booksApiRouter = require('./routes/api/books');
 const userApiRouter = require('./routes/api/user');
 const booksRouter = require('./routes/books');
-const authRouter = require('./routes/auth');
+const userRouter = require('./routes/user');
 const { buildUrl } = require('./utils');
 
 const PORT = process.env.PORT || 3000;
@@ -28,14 +28,12 @@ const APP_URL = '/api';
 const SERVICES_URLS = {
     Books: '/books',
     User : '/user',
-    Auth: '/',
 }
 
 const USER_API_URL = buildUrl(APP_URL, SERVICES_URLS.User);
 const BOOKS_API_URL = buildUrl(APP_URL, SERVICES_URLS.Books);
-const AUTH_API_URL = buildUrl(APP_URL, SERVICES_URLS.Auth);
 const BOOKS_URL = SERVICES_URLS.Books;
-const AUTH_URL = SERVICES_URLS.Auth;
+const USER_URL = SERVICES_URLS.User;
 
 const app = express();
 
@@ -55,7 +53,7 @@ app.use('/', indexRouter);
 app.use(BOOKS_API_URL, booksApiRouter);
 app.use(USER_API_URL, userApiRouter);
 app.use(BOOKS_URL, booksRouter);
-app.use(AUTH_URL, authRouter);
+app.use(USER_URL, userRouter);
 
 app.use(errorMiddleware);
 
