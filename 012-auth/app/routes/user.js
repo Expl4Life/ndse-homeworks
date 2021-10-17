@@ -22,6 +22,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/me', isAuth, (req, res) => {
+    console.log('%cuser.js line:25 req.user', 'color: #007acc;', req.user);
     res.render("user/me", {
         title: "Персональные данные",
         route: 'me',

@@ -8,7 +8,7 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        required: true,
+        required: false,
         default: ''
     },
     displayName: {
@@ -16,7 +16,12 @@ const userSchema = new Schema({
         required: false,
         default: 'none'
     },
-    email: {
+    avatarUrl: {
+        type: String,
+        required: false,
+        default: ''
+    },
+    emails: {
         type: Array,
         required: false,
         default: ['none']

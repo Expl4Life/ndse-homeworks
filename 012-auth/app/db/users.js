@@ -2,7 +2,7 @@ const { User } = require('../models');
 
 exports.findById = async (id, cb) => {
     console.log('%cusers.js line:4 id', 'color: #007acc;', id);
-    const user = await User.findById(id).select('-__v');
+    const user = await User.findById(`${id}`).select('-__v');
 
     if (user) {
         cb(null, user)

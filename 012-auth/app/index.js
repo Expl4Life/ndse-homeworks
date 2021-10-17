@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
 
 const loggerMiddleware = require('./middleware/logger');
 const errorMiddleware = require('./middleware/error');
@@ -26,6 +27,11 @@ const HostDb = process.env.DB_HOST || 'mongodb://mongodb/'
 const UserAtlasDB = process.env.DB_ATLAS_USERNAME;
 const PasswordAtlasDB = process.env.DB_ATLAS_PASSWORD;
 const NameAtlasDB = process.env.DB_ATLAS_NAME || 'app_database';
+
+const GITHUB_CLIENT_ID = "95e150b655f5a193d9d4";
+const GITHUB_CLIENT_SECRET = "6b6f7d00796b6915f1caa4cc4337c78f4d1ef26e";
+
+
 const APP_URL = '/api';
 const SERVICES_URLS = {
     Books: '/books',
@@ -57,22 +63,54 @@ function verify (username, password, done) {
 }
 
 //  Добавление стратегии для использования
-passport.use('local', new LocalStrategy(authOptions, verify))
+passport.use('local', new LocalStrategy(authOptions, verify));
+console.log(`http://localhost:${PORT}${USER_API_URL}/github/callback`);
+passport.use(new GitHubStrategy({
+        clientID: GITHUB_CLIENT_ID,
+        clientSecret: GITHUB_CLIENT_SECRET,
+        callbackURL: `http://localhost:${PORT}${USER_API_URL}/github/callback`
+    },
+    async (accessToken, refreshToken, profile, done) => {
+        
+         // asynchronous verification, for effect...
+        // To keep the example simple, the user's GitHub profile is returned to
+        // represent the logged-in user.  In a typical application, you would want
+        // to associate the GitHub account with a user record in your database,
+        // and return that user instead.
+        await db.users.addUser({
+            id: `${profile.id}`,
+            userName: profile.login,
+            displayName: profile.name,
+            avatarUrl: profile.avatar_url,
+            emails: [profile.email || '']
+        });
+        
+        return done(null, profile);
+    }
+));
 
 // Конфигурирование Passport для сохранения пользователя в сессии
-passport.serializeUser((user, cb) => {
-    console.log('%cindex.js line:62 user', 'color: #007acc;', user);
-    cb(null, user.id);
-})
+// passport.serializeUser((user, cb) => {
+//     console.log('%cindex.js line:62 user', 'color: #007acc;', user);
+//     cb(null, user.id);
+// })
 
-passport.deserializeUser( (id, cb) => {
-    console.log('%cindex.js line:67 id', 'color: #007acc;', id);
-    
-    db.users.findById(id,  (err, user) => {
-        if (err) { return cb(err) };
-        cb(null, user);
-    })
-})
+// passport.deserializeUser( (id, cb) => {
+//     console.log('%cindex.js line:67 id', 'color: #007acc;', id);
+//     cb(null, user);
+//     db.users.findById(id,  (err, user) => {
+//         if (err) { return cb(err) };
+//         cb(null, user);
+//     })
+// })
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+    done(null, obj);
+});
 
 const app = express();
 

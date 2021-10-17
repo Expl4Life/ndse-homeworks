@@ -37,4 +37,15 @@ router.post('/signup',
         }
     });
 
+router.get('/auth-github', passport.authenticate('github', { scope: [ 'user:email' ] }));
+
+router.get('/github/callback', 
+    passport.authenticate('github', { failureRedirect: '/user/login'}),
+    async (req, res) => {
+        console.log("req.user: ", req.user);
+        res.redirect('/user/me');
+    });
+
+
+
 module.exports = router;
