@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
     res.render("books/index", {
         title: "Books",
         books,
+        route: 'books'
     });
 });
 
@@ -16,6 +17,7 @@ router.get('/create', (req, res) => {
     res.render("books/create", {
         title: "Book | create",
         book: {},
+        route: 'books'
     });
 });
 
@@ -67,7 +69,8 @@ router.get('/:id', async(req, res) => {
             res.render("books/view", {
                 title: "Book | view",
                 book: book,
-                cnt: (Number(response.data && response.data.cnt || 0))
+                cnt: (Number(response.data && response.data.cnt || 0)),
+                route: 'books'
             });
         })
         .catch((e) => {
@@ -91,6 +94,7 @@ router.get('/update/:id', async (req, res) => {
     res.render("books/update", {
         title: "Book | view",
         book: book,
+        route: 'books'
     });
 });
 

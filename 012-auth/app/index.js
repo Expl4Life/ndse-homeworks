@@ -1,14 +1,17 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
 const loggerMiddleware = require('./middleware/logger');
 const errorMiddleware = require('./middleware/error');
+const sessionMiddleware = require('./middleware/session');
 
 const indexRouter = require('./routes/index');
 const booksApiRouter = require('./routes/api/books');
 const userApiRouter = require('./routes/api/user');
 const booksRouter = require('./routes/books');
+const authRouter = require('./routes/auth');
 const { buildUrl } = require('./utils');
 
 const PORT = process.env.PORT || 3000;
@@ -25,16 +28,21 @@ const APP_URL = '/api';
 const SERVICES_URLS = {
     Books: '/books',
     User : '/user',
+    Auth: '/',
 }
 
 const USER_API_URL = buildUrl(APP_URL, SERVICES_URLS.User);
 const BOOKS_API_URL = buildUrl(APP_URL, SERVICES_URLS.Books);
+const AUTH_API_URL = buildUrl(APP_URL, SERVICES_URLS.Auth);
 const BOOKS_URL = SERVICES_URLS.Books;
+const AUTH_URL = SERVICES_URLS.Auth;
 
 const app = express();
 
 
 app.use(express.urlencoded({extended:false}));
+app.use(cookieParser());
+app.use(sessionMiddleware());
 app.use(express.json());
 app.use(cors());
 app.use(loggerMiddleware);
@@ -47,6 +55,7 @@ app.use('/', indexRouter);
 app.use(BOOKS_API_URL, booksApiRouter);
 app.use(USER_API_URL, userApiRouter);
 app.use(BOOKS_URL, booksRouter);
+app.use(AUTH_URL, authRouter);
 
 app.use(errorMiddleware);
 

@@ -3,7 +3,7 @@ services:
   redis:
     image: redis:alpine
     volumes:
-      - logs_data:/var/log
+      - ./data-redis/redis:/data
 
   counter:
     build: ./counter

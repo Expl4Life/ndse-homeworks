@@ -1,0 +1,46 @@
+
+
+<%- include("../partials/layout-start", {title: title}) %>
+<%- include("../partials/menu") %>
+<h1><%= title %></h1>
+
+<div class="row">
+    <div class="col-sm-8">
+        <form action="/signup" method="post" class="mt-5">
+            <div class="form-group">
+                <label for="inputTitle">Логин</label>
+                <input type="text"
+                    name="title"
+                    name="username"
+                    placeholder="Введите логин"
+                    class="form-control"
+                    id="inputTitle">
+            </div>
+
+            <div class="form-group">
+                <label for="inputTitle">Пароль</label>
+                <input type="password"
+                    name="password"
+                    placeholder="Введите пароль"
+                    class="form-control"
+                    id="inputAuthors">
+            </div>
+
+            <div class="form-group">
+                <label for="inputTitle">Повторите пароль</label>
+                <input type="password"
+                    name="repeatPassword"
+                    placeholder="Повторите пароль"
+                    class="form-control"
+                    id="inputAuthors">
+            </div>
+
+            <div class="form-group text-right ">
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<%- include("../partials/layout-end") %>
