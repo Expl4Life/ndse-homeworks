@@ -1,0 +1,61 @@
+version: "3.9"
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+      - MONGO_INITDB_DATABASE=${DB_NAME}
+    volumes:
+      - ./data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${DB_USERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${DB_PASSWORD}
+    depends_on:
+      - mongodb
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - ./data-redis/redis:/data
+
+  counter:
+    restart: always
+    build: ./counter
+    volumes:
+      - ./counter:/app
+    ports:
+      - 3001:3000
+    environment:
+      - PORT=3001
+      - REDIS_URL=redis
+    links:
+      - redis
+
+  app:
+    restart: always
+    build: ./app
+    volumes:
+      - ./app:/app
+    ports:
+      - 3000:3000
+    environment:
+      - PORT=3000
+      - COUNTER_PORT=3001
+      - COUNTER_URL=counter
+      - DB_ATLAS_USERNAME=${DB_ATLAS_USERNAME}
+      - DB_ATLAS_PASSWORD=${DB_ATLAS_PASSWORD}
+      - DB_ATLAS_NAME=${DB_ATLAS_NAME}
+    links:
+      - counter
+
+volumes:
+  logs_data: {}

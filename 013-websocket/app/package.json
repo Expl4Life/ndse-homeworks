@@ -1,0 +1,37 @@
+{
+  "name": "012-auth",
+  "version": "1.0.0",
+  "description": "012-auth",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon -L --watch ./ index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Expl4Life/ndse-homeworks/tree/master/012-auth"
+  },
+  "keywords": [
+    "express, ejs, auth"
+  ],
+  "author": "Witcher",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.0.10",
+    "multer": "^1.4.3",
+    "passport": "^0.5.0",
+    "passport-github2": "^0.1.12",
+    "passport-local": "^1.0.0",
+    "socket.io": "^4.3.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

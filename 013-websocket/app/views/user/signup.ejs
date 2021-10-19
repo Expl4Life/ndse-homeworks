@@ -1,0 +1,45 @@
+
+
+<%- include("../partials/layout-start", {title: title}) %>
+<%- include("../partials/menu") %>
+<h1><%= title %></h1>
+
+<div class="row">
+    <div class="col-sm-8">
+        <form action="/api/user/signup" method="post" class="mt-5">
+            <div class="form-group">
+                <label for="userName">Логин</label>
+                <input type="text"
+                    name="userName"
+                    placeholder="Введите логин"
+                    class="form-control"
+                    id="userName">
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword">Пароль</label>
+                <input type="password"
+                    name="password"
+                    placeholder="Введите пароль"
+                    class="form-control"
+                    id="inputAuthors">
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword">Повторите пароль</label>
+                <input type="password"
+                    name="repeatPassword"
+                    placeholder="Повторите пароль"
+                    class="form-control"
+                    id="inputAuthors">
+            </div>
+
+            <div class="form-group text-right ">
+                <button type="submit" class="btn btn-primary">Регистрация</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<%- include("../partials/layout-end") %>

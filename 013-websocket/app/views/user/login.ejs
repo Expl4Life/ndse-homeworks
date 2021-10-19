@@ -1,0 +1,42 @@
+
+
+<%- include("../partials/layout-start", {title: title}) %>
+<%- include("../partials/menu") %>
+<h1><%= title %></h1>
+
+<div class="row">
+    <div class="col-sm-8">
+        <form action="/api/user/login" method="post" class="mt-5">
+            <div class="form-group">
+                <label for="inputUserName">Логин</label>
+                <input type="text"
+                    name="userName"
+                    placeholder="Введите логин"
+                    class="form-control"
+                    id="inputUserName">
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword">Пароль</label>
+                <input type="password"
+                    name="password"
+                    placeholder="Введите пароль"
+                    class="form-control"
+                    id="inputPassword">
+            </div>
+
+            <div class="form-group text-right ">
+                <button type="submit" class="btn btn-primary">Войти</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-8 text-right">
+        <a href="/api/user/auth-github" class="btn btn-primary">Войти через Github</a>
+    </div>
+</div>
+
+<%- include("../partials/layout-end") %>

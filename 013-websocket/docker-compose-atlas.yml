@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  redis:
+    image: redis:alpine
+    volumes:
+      - ./data-redis/redis:/data
+
+  counter:
+    build: ./counter
+    volumes:
+      - ./counter:/app
+    ports:
+      - 3001:3000
+    environment:
+      - PORT=3001
+      - REDIS_URL=redis
+    links:
+      - redis
+
+  app:
+    restart: always
+    build: ./app
+    volumes:
+      - ./app:/app
+    ports:
+      - 3000:3000
+    environment:
+      - PORT=3000
+      - COUNTER_PORT=3001
+      - COUNTER_URL=counter
+      - DB_ATLAS_USERNAME=${DB_ATLAS_USERNAME}
+      - DB_ATLAS_PASSWORD=${DB_ATLAS_PASSWORD}
+      - DB_ATLAS_NAME=${DB_ATLAS_NAME}
+    links:
+      - counter
+
+volumes:
+  logs_data: {}
