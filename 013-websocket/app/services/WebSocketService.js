@@ -1,4 +1,6 @@
 const socketIO = require('socket.io');
+const db = require('../db');
+const { ChatMessage } = require('../models');
 
 class WebSocketService {
     constructor(server) {
@@ -10,31 +12,31 @@ class WebSocketService {
     }
     
     init() {
-        this.io.on('connection', (socket) => {
+        this.io.on('connection', async (socket) => {
+
             const { id } = socket;
             console.log(`Socket connected: ${id}`);
-
-            // сообщение себе
-            socket.on('message-to-me', (msg) => {
-                msg.type = 'me';
-                socket.emit('message-to-me', msg);
-            });
-
-            // сообщение для всех
-            socket.on('message-to-all', (msg) => {
-                msg.type = 'all';
-                socket.broadcast.emit('message-to-all', msg);
-                socket.emit('message-to-all', msg);
-            });
-
-            // работа с комнатами
             const { roomName } = socket.handshake.query;
-            console.log(`Socket roomName: ${roomName}`);
+            let chat = await db.chats.findChatById(roomName);
+
+            if(!chat) {
+                chat = await db.chats.createChat({chatId: roomName});
+            } 
+
+            chat && socket.emit('create-comments', chat.messages || []);
+
             socket.join(roomName);
-            socket.on('message-to-room', (msg) => {
-                msg.type = `room: ${roomName}`;
-                socket.to(roomName).emit('message-to-room', msg);
-                socket.emit('message-to-room', msg);
+            socket.on('comment-to-book', async (msg) => {
+                const message = new ChatMessage({
+                    userName: msg.userName,
+                    userId: msg.userId,
+                    text: msg.text,
+                });
+                await db.chats.addMessage(roomName, message);
+                console.log(message);
+                msg.time = `${new Date().toLocaleDateString()}  ${getTime()}`;
+                socket.to(roomName).emit('comment-to-book', msg);
+                socket.emit('comment-to-book', msg);
             });
 
             socket.on('disconnect', () => {
@@ -44,5 +46,23 @@ class WebSocketService {
     }
 }
 
+function getTime() {
+    let moscowTimeZone = 3;
+    let today = new Date();
+    let h = today.getUTCHours() + moscowTimeZone;
+    let m = today.getMinutes();
+    let s = today.getSeconds();
+    // add a zero in front of numbers<10
+    m = checkTime(m);
+    s = checkTime(s);
+    return `${h >= 24 ? h - 24 : h}` + ":" + m + ":" + s;
+}
+
+function checkTime(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
 
 module.exports = WebSocketService;

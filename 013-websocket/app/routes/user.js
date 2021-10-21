@@ -5,14 +5,16 @@ const isAuth = require('../middleware/isAuth');
 router.get('/login', (req, res) => {
     res.render("user/login", {
         title: "Войти в систему",
-        route: 'login'
+        route: 'login',
+        user: req.user || {},
     });
 });
 
 router.get('/signup', (req, res) => {
     res.render("user/signup", {
         title: "Регистрация",
-        route: 'signup'
+        route: 'signup',
+        user: req.user || {},
     });
 });
 

@@ -17,12 +17,19 @@
             <li class="nav-item <% if(route === 'books'){ %> active <% } %>">
                 <a class="nav-link" href="/books">Книги</a>
             </li>
-            <li class="nav-item <% if(route === 'login'){ %> active <% } %>">
-                <a class="nav-link" href="/user/login">Войти</a>
-            </li>
-            <li class="nav-item <% if(route === 'signup'){ %> active <% } %>">
-                <a class="nav-link " href="/user/signup">Регистрация</a>
-            </li>
+            <% if(user && user._id || user.id){ %>
+                <li class="nav-item <% if(route === 'me'){ %> active <% } %>">
+                    <a class="nav-link" href="/user/me">Профиль</a>
+                </li>
+            <% } else{ %>  
+                <li class="nav-item <% if(route === 'login'){ %> active <% } %>">
+                    <a class="nav-link" href="/user/login">Войти</a>
+                </li>
+                <li class="nav-item <% if(route === 'signup'){ %> active <% } %>">
+                    <a class="nav-link " href="/user/signup">Регистрация</a>
+                </li>
+            <% } %>
+
         </ul>
     </div>
 </nav>

@@ -7,5 +7,7 @@ solution
 /011-mongo/data
 /012-auth/data
 /012-auth/data-redis
+**/data-redis
+**/data
 #IDE
 .DS_store

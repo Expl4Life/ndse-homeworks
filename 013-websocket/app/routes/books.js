@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
     res.render("books/index", {
         title: "Books",
         books,
-        route: 'books'
+        route: 'books',
+        user: req.user || {}
     });
 });
 
@@ -17,7 +18,8 @@ router.get('/create', (req, res) => {
     res.render("books/create", {
         title: "Book | create",
         book: {},
-        route: 'books'
+        route: 'books',
+        user: req.user || {}
     });
 });
 
@@ -70,7 +72,8 @@ router.get('/:id', async(req, res) => {
                 title: "Book | view",
                 book: book,
                 cnt: (Number(response.data && response.data.cnt || 0)),
-                route: 'books'
+                route: 'books',
+                user: req.user || {}
             });
         })
         .catch((e) => {
@@ -94,7 +97,8 @@ router.get('/update/:id', async (req, res) => {
     res.render("books/update", {
         title: "Book | view",
         book: book,
-        route: 'books'
+        route: 'books',
+        user: req.user || {}
     });
 });
 

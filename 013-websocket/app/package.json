@@ -1,7 +1,7 @@
 {
-  "name": "012-auth",
+  "name": "013-websocket",
   "version": "1.0.0",
-  "description": "012-auth",
+  "description": "013-websocket",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Expl4Life/ndse-homeworks/tree/master/012-auth"
+    "url": "https://github.com/Expl4Life/ndse-homeworks/tree/master/013-websocket"
   },
   "keywords": [
-    "express, ejs, auth"
+    "express, ejs, auth, websocket"
   ],
   "author": "Witcher",
   "license": "ISC",
